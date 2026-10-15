@@ -1,0 +1,4 @@
+Dispensed 2000.0, balance 3000.0
+Invalid Amount Denomination: 350.0 is not a multiple of 100
+Insufficient Funds Error: Balance is only 3000.0
+Dispensed 1500.0, balance 1500.0
