@@ -1,0 +1,40 @@
+class Boarder {
+    String name;
+    int days;
+
+    Boarder(String n, int d) {
+        name = n;
+        days = d;
+    }
+
+    double bill() {
+        return days * 85.0;
+    }
+}
+
+public class MessBill {
+    public static void main(String[] args) {
+        Boarder[] list = { 
+            new Boarder("Aravind", 28),
+            new Boarder("Divya", 30),
+            new Boarder("Karthik", 25) 
+        };
+
+        double total = 0;
+        Boarder maxBoarder = list[0]; // Track the student with the highest bill
+
+        System.out.println("NAME       DAYS     BILL");
+        for (Boarder b : list) {
+            System.out.printf("%-10s %4d %8.2f%n", b.name, b.days, b.bill());
+            total = total + b.bill();
+
+            // Update maxBoarder if current student has a higher bill
+            if (b.bill() > maxBoarder.bill()) {
+                maxBoarder = b;
+            }
+        }
+
+        System.out.printf("Total collection = Rs. %.2f%n", total);
+        System.out.printf("Highest Bill: %s with Rs. %.2f%n", maxBoarder.name, maxBoarder.bill());
+    }
+}
