@@ -1,4 +1,4 @@
-cd "c:\11249A371\" && javac StudentDemo.java && java StudentDemo
+cd "c:\11249A371\" && javac studentdemo.java && java studentdemo
 ROLL NAME MARKS
 101 Aravind 78
 102 Divya 91
