@@ -1,0 +1,51 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+
+public class RegisterForm {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Student Registration");
+        f.setLayout(new FlowLayout());
+
+        JTextField name = new JTextField(14);
+        JComboBox<String> br = new JComboBox<>(new String[]{"CSE", "IT", "ECE"});
+        JRadioButton m = new JRadioButton("Male", true), fe = new JRadioButton("Female");
+        ButtonGroup g = new ButtonGroup(); 
+        g.add(m); 
+        g.add(fe);
+
+        JButton sub = new JButton("Submit");
+
+        // Table Model and JTable setup
+        String[] columns = {"Name", "Branch", "Gender"};
+        DefaultTableModel model = new DefaultTableModel(columns, 0);
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(280, 100)); // Set table dimensions
+
+        f.add(new JLabel("Name")); f.add(name);
+        f.add(new JLabel("Branch")); f.add(br);
+        f.add(m); f.add(fe); 
+        f.add(sub); 
+        f.add(scrollPane); // Added JScrollPane containing the JTable
+
+        sub.addActionListener(e -> {
+            if (name.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(f, "Name cannot be empty");
+            } else {
+                String gender = m.isSelected() ? "Male" : "Female";
+                String selectedBranch = (String) br.getSelectedItem();
+
+                // Add row to JTable
+                model.addRow(new Object[]{name.getText().trim(), selectedBranch, gender});
+
+                // Clear input field after submission
+                name.setText("");
+            }
+        });
+
+        f.setSize(320, 300); 
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
+    }
+}
