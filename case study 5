@@ -1,0 +1,27 @@
+class Seats {
+    private int available = 10;
+
+    // Modified method to obtain thread name dynamically
+    synchronized void book() {
+        String counter = Thread.currentThread().getName();
+        if (available > 0) {
+            available--;
+            System.out.println(counter + " booked seat. Left = " + available);
+        } else {
+            System.out.println(counter + " -> HOUSE FULL");
+        }
+    }
+}
+
+public class Booking {
+    public static void main(String[] args) {
+        Seats s = new Seats();
+        for (int i = 1; i <= 3; i++) {
+            // Set thread name directly when creating the Thread object
+            new Thread(() -> {
+                for (int j = 0; j < 4; j++)
+                    s.book();
+            }, "Counter-" + i).start();
+        }
+    }
+}
