@@ -1,0 +1,8 @@
+init()
+start()
+paint()
+stop() 
+start() 
+paint()
+stop() 
+destroy()
