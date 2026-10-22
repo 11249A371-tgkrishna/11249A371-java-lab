@@ -1,0 +1,7 @@
+D:\JavaLab\casestudy2> javac -d . Student.java FeeRule.java
+D:\JavaLab\casestudy2> javac FeeApp.java
+D:\JavaLab\casestudy2> java FeeApp
+Meena BE 75000.00
+Ravi ME 60000.00
+Anu BSc 40000.00
+Total fee = 175000.00
